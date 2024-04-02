@@ -49,7 +49,7 @@ RUN mv /etc/php/7.0/fpm/pool.d/www.conf /etc/php/7.0/fpm/pool.d/www.conf.disable
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # extract and add sentrifugo zip
-ADD Sentrifugo.zip /Sentrifugo.zip
+RUN wget http://www.sentrifugo.com/home/downloadfile?file_name=Sentrifugo.zip -O Sentrifugo.zip 
 RUN unzip /Sentrifugo.zip -d / && rm -rfv /Sentrifugo.zip && mv -v /Sentrifugo_3.0 /sentrifugo
 RUN chown -R www-data:www-data /sentrifugo/
 
